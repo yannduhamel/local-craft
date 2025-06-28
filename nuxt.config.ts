@@ -7,6 +7,21 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@nuxt/fonts',
     '@nuxt/icon',
-    '@nuxt/image'
-  ]
-})
+    '@nuxt/image',
+    '@nuxtjs/leaflet',
+  ],
+  fonts: {
+    families: [
+      {
+        name: 'Clash Grotesk',
+        src: '/assets/fonts/ClashGrotesk-Variable.woff2',
+        style: 'normal',
+        weight: '100 900',
+        global: true,
+      },
+    ],
+  },
+  icon: {
+    size: '24px',
+  }
+  })
