@@ -20,6 +20,9 @@ importers:
       '@nuxt/image':
         specifier: 1.10.0
         version: 1.10.0(db0@0.3.1)(ioredis@5.6.0)(magicast@0.3.5)
+      '@nuxtjs/leaflet':
+        specifier: ^1.2.6
+        version: 1.2.6(typescript@5.8.3)
       eslint:
         specifier: ^9.0.0
         version: 9.24.0(jiti@2.4.2)
@@ -602,6 +605,9 @@ packages:
     peerDependencies:
       vue: ^3.3.4
 
+  '@nuxtjs/leaflet@1.2.6':
+    resolution: {integrity: sha512-AOefIxck/cp8LOndV91cbWfHy3qDOtxnGfSABZUxPpZNv3dBn+zY+kX/r8zmkHaoTAevFYMs7mv+oeMA2PmGJQ==}
+
   '@nuxtjs/supabase@1.5.2':
     resolution: {integrity: sha512-Ksykh/5H+esDHjrGCsAZV0q0GiLu0MGnpFF80yaedQ47r1V2OkPfbUk1Al/9Fjgwek1uk9NLfRDshSaKJCFLwg==}
 
@@ -1019,8 +1025,14 @@ packages:
   '@types/estree@1.0.7':
     resolution: {integrity: sha512-w28IoSUCJpidD/TGviZwwMJckNESJZXFu7NBZ5YJ4mEUnNraUn9Pm8HSZm/jDF1pDWYKspWE7oVphigUPRakIQ==}
 
+  '@types/geojson@7946.0.16':
+    resolution: {integrity: sha512-6C8nqWur3j98U6+lXDfTUWIfgvZU+EumvpHKcYjujKH7woYyLj2sUmff0tRhrqM7BohUw7Pz3ZB1jj2gW9Fvmg==}
+
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
+
+  '@types/leaflet@1.9.19':
+    resolution: {integrity: sha512-pB+n2daHcZPF2FDaWa+6B0a0mSDf4dPU35y5iTXsx7x/PzzshiX5atYiS1jlBn43X7XvM8AP+AB26lnSk0J4GA==}
 
   '@types/node@22.14.0':
     resolution: {integrity: sha512-Kmpl+z84ILoG+3T/zQFyAJsU6EPTmOCj8/2+83fSN6djd6I4o7uOuGIH6vq3PrjY5BGitSbFuMN18j3iknubbA==}
@@ -1185,6 +1197,15 @@ packages:
     peerDependencies:
       vite: ^5.0.0 || ^6.0.0
       vue: ^3.2.25
+
+  '@vue-leaflet/vue-leaflet@0.10.1':
+    resolution: {integrity: sha512-RNEDk8TbnwrJl8ujdbKgZRFygLCxd0aBcWLQ05q/pGv4+d0jamE3KXQgQBqGAteE1mbQsk3xoNcqqUgaIGfWVg==}
+    peerDependencies:
+      '@types/leaflet': ^1.5.7
+      leaflet: ^1.6.0
+    peerDependenciesMeta:
+      '@types/leaflet':
+        optional: true
 
   '@vue-macros/common@1.16.1':
     resolution: {integrity: sha512-Pn/AWMTjoMYuquepLZP813BIcq8DTZiNCoaceuNlvaYuOTd8DqBZWc5u0uOMQZMInwME1mdSmmBAcTluiV9Jtg==}
@@ -2439,6 +2460,9 @@ packages:
   lazystream@1.0.1:
     resolution: {integrity: sha512-b94GiNHQNy6JNTrt5w6zNyffMrNkXZb3KTkCZJb2V1xaEGCk093vkZ2jk3tpaeP33/OiXC+WvK9AxUebnf5nbw==}
     engines: {node: '>= 0.6.3'}
+
+  leaflet@1.9.4:
+    resolution: {integrity: sha512-nxS1ynzJOmOlHp+iL3FyWqK89GtNL8U8rvlMOsQdTTssxZwCXh8N2NB3GDQOL+YR3XnWyZAxwQixURb+FA74PA==}
 
   levn@0.4.1:
     resolution: {integrity: sha512-+bT2uH4E5LGE7h/n3evcS/sQlJXCpIp6ym8OWJ5eV6+67Dsql/LaaT7qJBAt2rzfoa/5QBGBhxDix1dMt2kQKQ==}
@@ -4800,6 +4824,14 @@ snapshots:
       - vue-tsc
       - yaml
 
+  '@nuxtjs/leaflet@1.2.6(typescript@5.8.3)':
+    dependencies:
+      '@types/leaflet': 1.9.19
+      '@vue-leaflet/vue-leaflet': 0.10.1(@types/leaflet@1.9.19)(leaflet@1.9.4)(typescript@5.8.3)
+      leaflet: 1.9.4
+    transitivePeerDependencies:
+      - typescript
+
   '@nuxtjs/supabase@1.5.2':
     dependencies:
       '@supabase/ssr': 0.6.1(@supabase/supabase-js@2.50.0)
@@ -5139,7 +5171,13 @@ snapshots:
 
   '@types/estree@1.0.7': {}
 
+  '@types/geojson@7946.0.16': {}
+
   '@types/json-schema@7.0.15': {}
+
+  '@types/leaflet@1.9.19':
+    dependencies:
+      '@types/geojson': 7946.0.16
 
   '@types/node@22.14.0':
     dependencies:
@@ -5320,6 +5358,15 @@ snapshots:
     dependencies:
       vite: 6.2.5(@types/node@22.14.0)(jiti@2.4.2)(sass@1.89.2)(terser@5.39.0)(yaml@2.7.1)
       vue: 3.5.13(typescript@5.8.3)
+
+  '@vue-leaflet/vue-leaflet@0.10.1(@types/leaflet@1.9.19)(leaflet@1.9.4)(typescript@5.8.3)':
+    dependencies:
+      leaflet: 1.9.4
+      vue: 3.5.13(typescript@5.8.3)
+    optionalDependencies:
+      '@types/leaflet': 1.9.19
+    transitivePeerDependencies:
+      - typescript
 
   '@vue-macros/common@1.16.1(vue@3.5.13(typescript@5.8.3))':
     dependencies:
@@ -6694,6 +6741,8 @@ snapshots:
   lazystream@1.0.1:
     dependencies:
       readable-stream: 2.3.8
+
+  leaflet@1.9.4: {}
 
   levn@0.4.1:
     dependencies:
