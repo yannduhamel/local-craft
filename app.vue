@@ -24,8 +24,7 @@
     }
 
     .layout {
-        display: flex;
-        flex-direction: column;
-        min-height: 100svh;
+        position: relative;
+        height: 100svh;
     }
 </style>
