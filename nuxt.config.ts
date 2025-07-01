@@ -9,7 +9,20 @@ export default defineNuxtConfig({
     '@nuxt/icon',
     '@nuxt/image',
     '@nuxtjs/leaflet',
+    '@nuxtjs/supabase'
   ],
+  supabase: {
+    redirect: false
+  },
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: `@use "@/assets/scss/_variables.scss" as *;`
+        }
+      }
+    }
+  },
   fonts: {
     families: [
       {

@@ -20,7 +20,7 @@
     
     html, body, #__nuxt {
         height: 100svh;
-        background-color: bisque;
+        background-color: $primary-color;
     }
 
     .layout {

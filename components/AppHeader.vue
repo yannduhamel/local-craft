@@ -1,18 +1,30 @@
+<script lang="ts" setup>
+const client = useSupabaseClient()
+const user = useSupabaseUser()
+
+async function signOut() {
+    await client.auth.signOut()
+    await navigateTo('/')
+}
+</script>
+
 <template>
     <div class="header-container">
-        <div class="app-name">
+        <div class="app-name" @click="navigateTo('/')">
         Local Craft
         </div>
         <div class="app-nav">
             <Icon name="iconamoon:information-circle-bold" class="app-icon" />
             <Icon name="charm:moon" class="app-icon" />
+            <Icon 
+            v-if="user"
+            name="cuida:logout-outline"
+            class="app-icon"
+            title="Se déconnecter"
+            @click="signOut"/>
         </div>
     </div>
 </template>
-
-<script lang="ts" setup>
-
-</script>
 
 <style lang="scss">
     .header-container {
@@ -38,12 +50,18 @@
             font-size: 1.7rem;
             font-family: 'Clash Grotesk', sans-serif;
             font-weight: 600;
+            color: #39393A;
+            cursor: pointer;
         }
 
         .app-nav {
             display: flex;
             margin: 1rem;
             gap: 0.7rem;
+
+            .app-icon {
+                cursor: pointer;
+            }
         }
     }
 </style>
